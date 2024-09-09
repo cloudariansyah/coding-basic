@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ckeditor 5 - 2024</title>
+  <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/42.0.0/ckeditor5.css">
+    <style>
+            .main-container {
+                width: 795px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+
+<script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/42.0.0/ckeditor5.js",
+            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/42.0.0/"
+        }
+    }
+</script>
+
+<script type="module">
+    import {
+        ClassicEditor,
+        Essentials,
+        Paragraph,
+        Bold,
+        Italic,
+        Font,
+        Link,
+        Table,
+        TableToolbar,
+        List,
+        Alignment,  // Import plugin Alignment
+        SourceEditing // Import plugin SourceEditing
+    } from 'ckeditor5';
+
+    document.querySelectorAll('.editor').forEach((editorElement, index) => {
+        ClassicEditor
+            .create(editorElement, {
+                plugins: [
+                    Essentials, 
+                    Paragraph, 
+                    Bold, 
+                    Italic, 
+                    Font, 
+                    Link, 
+                    Table, 
+                    TableToolbar, 
+                    List,
+                    Alignment,  // Tambahkan plugin Alignment
+                    SourceEditing // Tambahkan plugin SourceEditing
+                ],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', '|',
+                    'link', 'insertTable', '|', 'bulletedList', 'numberedList', '|',
+                    'alignment:left', 'alignment:center', 'alignment:right', 'alignment:justify', // Tambahkan tombol alignment
+                    'sourceEditing' // Tambahkan tombol view HTML
+                ],
+                table: {
+                    contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+                }
+            })
+            .then(editor => {
+                console.log(`Editor ${index + 1} is ready`);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
+
+</head>
+<body>
+
+<h1>This is WYSWYG ckeditor5</h1>
+ 
+<textare class="editor"></textarea>
+</body>
+</html>
